@@ -11,3 +11,9 @@ Once server started, it will send to all available connections a message `Ping` 
 ## 2. Akka TCP client
 Run by `AkaTcp.launch`.\
 Once client started, it will connection to TCP server (on port 8077) and send a message `TcpSimpleMsg` to server each 2 seconds.
+
+### 2.1. Logging to file
+Edit log path in `src/main/resources/logging.properties`
+
+### 2.2. Interacting with Client
+Enter to send new simple message to TCP server.

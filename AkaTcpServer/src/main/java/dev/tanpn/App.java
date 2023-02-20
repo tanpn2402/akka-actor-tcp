@@ -42,7 +42,7 @@ class Ref extends AbstractActor {
 					while (true) {
 						sender.tell(new Ping("ping"), getSelf());
 						try {
-							Thread.sleep(2000);
+							Thread.sleep(10000);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}

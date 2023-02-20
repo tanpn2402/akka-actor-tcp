@@ -1,6 +1,7 @@
 package dev.tanpn;
 
 import java.net.InetSocketAddress;
+import java.util.Scanner;
 import java.util.logging.Logger;
 
 import akka.actor.AbstractActor;
@@ -57,7 +58,7 @@ class Listener extends AbstractActor {
 			while (running) {
 				try {
 					actorRef.tell(new TcpSimpleMsg("Hello"), ActorRef.noSender());
-					Thread.sleep(2000);
+					Thread.sleep(10000);
 				} catch (InterruptedException e) {
 					break;
 				}
@@ -73,6 +74,7 @@ class Listener extends AbstractActor {
 
 public class App {
 	private final int PORT = 8077;
+	private Scanner scanner = new Scanner(System.in);
 	Logger logger = Logger.getLogger(App.class.getName());
 	ActorSystem actorSystem = ActorSystem.create("CLIENT");
 
@@ -84,6 +86,12 @@ public class App {
 	public void start() throws InterruptedException {
 		ActorRef listenerActor = actorSystem.actorOf(Props.create(Listener.class), "actorX");
 		InetSocketAddress inetSocketAddress = new InetSocketAddress("localhost", PORT);
-		actorSystem.actorOf(Client.props(inetSocketAddress, listenerActor), "TCP_client");
+		ActorRef tcpClient = actorSystem.actorOf(Client.props(inetSocketAddress, listenerActor), "TCP_client");
+		
+		System.out.println("Starting interact with Client by typing words (Enter to send)...");
+		while (true) {
+			String message = scanner.next();
+			tcpClient.tell(new TcpSimpleMsg(message), ActorRef.noSender());
+		}
 	}
 }

@@ -60,18 +60,16 @@ public class Client extends AbstractActor {
 
 					// uses become to switch from unconnected to connected operation, demonstrating
 					// the commands and events which are observed in that state
+					
+					// --> All new messages from (tell, ask, forward action) will be handled by function `connected`
 					getContext().become(connected(getSender()));
+					// getSender() is Actor[akka://CLIENT/system/IO-TCP...]
 				})
 				.build();
 	}
 
 	private Receive connected(final ActorRef connection) {
 		return receiveBuilder()
-				.match(String.class, msg -> {
-					TcpMessage.write(ByteString.fromString(msg));
-					logger.info(msg);
-					listener.tell(msg, getSelf());
-				})
 				.match(TcpSimpleMsg.class, msg -> {
 					logger.info("Send message to server " + msg.getMessage());
 					connection.tell(TcpMessage.write(ByteString.fromString(msg.getMessage())), getSelf());
