@@ -1,0 +1,23 @@
+syntax = "proto2";
+
+package protobuf.bean;
+
+option java_package = "com.txtech.services.protobuf.bean";
+option java_outer_classname = "AccountSumaryProtos";
+
+message AccountSummary {
+    optional int64 accountBalance = 1;
+    optional double commission = 2;
+    optional double fee = 3;
+    optional double interest = 4;
+    optional double extLoan = 5;
+    optional double deliveryAmount = 6;
+    optional double doubleingPL = 7;
+    optional double tradingPL = 8;
+    optional double totalPL = 9;
+    optional double marginable = 10;
+    optional double depositable = 11;
+    optional double rcCall = 12;
+    optional double cashDrawable = 13;
+    optional double nonCashDrawable = 14;
+}

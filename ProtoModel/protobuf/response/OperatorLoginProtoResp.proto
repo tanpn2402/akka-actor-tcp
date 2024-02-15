@@ -1,0 +1,12 @@
+syntax = "proto2";
+package protobuf.response;
+ 
+option java_package = "com.txtech.services.protobuf.response";
+option java_outer_classname = "OperatorLoginProtoResp";
+ 
+message OperatorLoginResp {
+	  optional string message=1;
+	  optional bool success=2;
+}
+
+

@@ -1,0 +1,14 @@
+syntax = "proto2";
+
+package protobuf.request;
+ 
+option java_package = "com.txtech.services.protobuf.request";
+option java_outer_classname = "OperatorLoginProtoReq";
+ 
+message OperatorLoginReq {
+	required string operatorID=1;
+	required string password=2;
+	optional string securityCode=3;
+}
+
+

@@ -1,0 +1,23 @@
+syntax = "proto2";
+import "protobuf/bean/accountSumary.proto";
+import "protobuf/bean/assetsInfo.proto";
+import "protobuf/bean/marginInfo.proto";
+import "protobuf/bean/balanceDetails.proto";
+
+package protobuf.bean;
+
+option java_package = "com.txtech.services.protobuf.bean";
+option java_outer_classname = "AccountBalanceProtos";
+
+message AccountBalance {
+    optional string clientID = 1;
+    optional int32 tradingAccSeq = 2;
+    optional string subAccountID = 3;
+    optional string currency = 4;
+    optional protobuf.bean.AccountSummary accountSummary = 5;
+    optional protobuf.bean.AssetsInfo internalAssets = 6;
+    optional protobuf.bean.MarginInfo internalMargin = 7;
+    optional protobuf.bean.AssetsInfo exchangeAssets = 8;
+    optional protobuf.bean.MarginInfo exchangeMargin = 9;
+    optional protobuf.bean.BalanceDetails balanceDetails = 10;
+}

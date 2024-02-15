@@ -1,0 +1,15 @@
+syntax = "proto2";
+package protobuf.response;
+ 
+option java_package = "com.txtech.services.protobuf.response";
+option java_outer_classname = "CancelOrderProtoResp";
+ 
+message CancelOrderResp {
+	  message ResultSet {
+          required string orderGroupId = 1;
+          required bool success = 2;
+          required string errorCode = 3;
+          required string reject = 4;
+      }
+      repeated ResultSet mainResult = 7;
+}

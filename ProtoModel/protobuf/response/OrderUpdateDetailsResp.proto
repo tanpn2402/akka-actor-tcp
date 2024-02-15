@@ -1,0 +1,81 @@
+syntax = "proto2";
+package protobuf.response;
+ 
+option java_package = "com.txtech.services.protobuf.response";
+option java_outer_classname = "OrderUpdateDetailsProtoResp";
+ 
+message OrderUpdateDetails {
+	  required string orderID = 1;
+	  required string orderGroupID = 2;
+	  optional string mvDNSeq = 3;
+	  optional string userID=4;
+	  optional string mvEntityID=16;
+	  optional string orderType=11;
+	  optional string stockID=12;
+	  optional string clientID=10;
+	  optional string tradingAccSeq=9;
+	  optional string subAccountID=8;
+	  optional string bs=7;
+	  optional string price=6;
+	  optional string qty=5;
+	  optional string pendingPrice=17;
+	  optional string pendingQty=18;
+	  optional string cancelQty=19;
+	  optional string osqty=20;
+	  optional string filledQty=21;
+	  optional string mvAON=22;
+	  optional string status=23;
+	  optional string rejectReason=24;
+	  optional string mvApprovalReason=25;
+	  optional string inputTime=26;
+	  optional string modifiedTime=27;
+	  optional string mvBrokerID=28;
+	  optional string mvOrigin=29;
+	  optional string mvHedge=30;
+	  optional string mvShortsell=31;
+	  optional string validity=14;
+	  optional string mvValidityDate=32;
+	  optional bool stopOrder=15;
+	  optional string stopPrice=33;
+	  optional string stopPrice2=34;
+	  optional string stopToler=35;
+	  optional string stopStep=36;
+	  
+	  optional string mvStopOrderExpiryDate=37;
+	  optional string mvIsPriceWarningResubmit=38;
+	  optional string channelID=39;
+	  optional string mvBranchID=40;
+	  optional string mvIsOddLot=41;
+	  optional string mvIsManualTrade=42;
+	  optional string activationDate=43;
+	  optional string goodTillDate=44;
+	  optional string avgPrice=13;
+	  optional string remark=45;
+	  optional string contactPhone=46;
+	  optional string grossAmt=47;
+	  optional string netAmt=48;
+	  optional string scrip=49;
+	  optional string mvModifyOrderID=50;
+	  optional string currencyID=51;
+	  optional string marketID=52;
+	
+	  optional string shortName=53;
+	  optional string mvModifiedDate=54;
+	  optional string mvModifiedDateTime=55;
+	  optional string mvBankID=56;
+	  optional string mvBankACID=57;
+	  optional string mvDateTime=58;
+	  optional string minQty=59;
+	  optional bool tPlus1=60;
+	  optional string stopTime=61;
+	  optional bool forceClose=62;
+	  optional string instrumentId=63;
+	  optional string stopType=64;
+	  optional bool cancellable=65;
+	  optional bool modifiable=66;
+	  optional string position=67;
+	  optional string conditionedOrderGroupID=68;
+	  optional string extOrderID=69;
+}
+
+

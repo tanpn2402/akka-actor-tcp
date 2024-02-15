@@ -1,0 +1,27 @@
+syntax = "proto2";
+
+package protobuf.bean;
+
+option java_package = "com.txtech.services.protobuf.bean";
+option java_outer_classname = "ClearingTradeDetailProtos";
+
+message ClearingTradeDetail {
+  optional int32 uuid=1;
+  optional int32 clearingTradeID=2;
+  optional string orderGroupID=3;
+  optional string clientID=4;
+  optional string tradingAccSeq=5;
+  optional string tradeNo=6;
+  optional string asofDate=7;
+  optional string seriesID=8;
+  optional string marketID=9;
+  optional string BS=10;
+  optional int32 remQty=11;
+  optional bool isReject=12;
+  optional int32 qty=13;
+  optional int32 tradeQty=14;
+  optional double tradePrice=15;
+  optional bool isManualTrade=16;
+  optional string subAccountID =17;
+  optional string extOrderID =18;
+}

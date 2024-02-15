@@ -1,0 +1,19 @@
+syntax = "proto2";
+
+package protobuf.response;
+
+option java_package = "com.txtech.services.protobuf.response";
+option java_outer_classname = "CPCashDepositWithdrawalEnquiryResponseProtos";
+
+message CPCashDepositWithdrawalEnquiryResponse {
+    optional int32 msgSeq = 1;
+    optional string errorCode = 2;
+    optional string errorMessage = 3;
+    optional string messageID = 4;
+    optional int32 returnCode = 5;
+    optional int32 total = 6;
+    repeated CPCashDWEnquiryInfoList cpCashDWEnquiryInfoLIst = 7;
+
+    message CPCashDWEnquiryInfoList {
+    }
+}

@@ -1,0 +1,20 @@
+syntax = "proto2";
+package protobuf.response;
+ 
+option java_package = "com.txtech.services.protobuf.response";
+option java_outer_classname = "ModifyOrderProtoResp";
+ 
+message ModifyOrderResp {
+    optional string orderId = 7;
+    optional string orderGroupId = 8;
+    optional bool success = 9;
+    optional bool needToConfirmExceedTradingLimit = 10;
+    optional bool needToConfirmExceedDerivation = 11;
+    optional bool needToConfirmExceedDerivationForStopPrice = 12;
+    optional bool needToConfirmMaxVolumn = 13;
+    optional bool needToConfirmMarginCall = 14;
+    optional bool needToConfirmExceedPositionWarningLevel1 = 15;
+    optional bool needToConfirmExceedPositionWarningLevel2 = 16;
+    optional bool needToConfirmExceedOpenInterestWarningLevel1 = 17;
+    optional bool needToConfirmExceedOpenInterestWarningLevel2 = 18;
+}

@@ -1,0 +1,18 @@
+syntax = "proto2";
+
+package protobuf.bean;
+
+option java_package = "com.txtech.services.protobuf.bean";
+option java_outer_classname = "MarginInfoProtos";
+
+message MarginInfo {
+    optional double initialMargin = 1;
+    optional double spreadMargin = 2;
+    optional double deliveryMargin = 3;
+    optional double marginRequirement = 4;
+    optional double accountRatio = 5;
+    optional double usedLimitWarningLevel1 = 6;
+    optional double usedLimitWarningLevel2 = 7;
+    optional double usedLimitWarningLevel3 = 8;
+    optional double marginCall = 9;
+}

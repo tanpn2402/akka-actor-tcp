@@ -1,0 +1,10 @@
+syntax = "proto2";
+
+package protobuf.request;
+
+option java_package = "com.txtech.services.protobuf.request";
+option java_outer_classname = "CheckAuthenticationRequestProtos";
+
+message CheckAuthenticationRequest {
+    required string loginID = 1;
+}

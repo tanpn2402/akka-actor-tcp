@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+package protobuf.request;
+
+option java_package = "com.txtech.services.protobuf.request";
+option java_outer_classname = "VerifyPinRequestProtos";
+
+message VerifyPinRequest {
+    required string loginID = 1;
+    required string pin = 2;
+    required string savepin = 3;
+    required string service = 4;
+    required string clientID = 5;
+    required int32 tradingAccSeq = 6;
+}

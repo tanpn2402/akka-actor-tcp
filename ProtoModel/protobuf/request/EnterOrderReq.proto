@@ -1,0 +1,30 @@
+syntax = "proto2";
+
+package protobuf.request;
+ 
+option java_package = "com.txtech.services.protobuf.request";
+option java_outer_classname = "EnterOrderProtoReq";
+ 
+message EnterOrderReq {
+    required string clientID = 1;
+    required int32 tradingAccSeq = 2;
+    required string language = 3;
+    required string subAccoutID = 4;
+    required string BS = 5;
+    required string seriesID = 6;
+    required string marketID = 7;
+    required string price = 8;
+    required string position = 9;
+    required string qty = 10;
+    required string orderType = 11;
+    required bool inactive = 12;
+    required bool auctionOrder = 13;
+    required bool stop = 14;
+    required string stopPrice = 15;
+    required string stopPrice2 = 16;
+    required string stopType = 17;
+    required string stopStep = 18;
+    required string stopTime = 19;
+    required string stopToler = 20;
+    required string validity = 21;
+}

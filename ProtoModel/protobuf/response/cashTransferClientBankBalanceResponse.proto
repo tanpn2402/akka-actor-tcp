@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+package protobuf.response;
+
+option java_package = "com.txtech.services.protobuf.response";
+option java_outer_classname = "CashTransferClientBankBalanceResponseProtos";
+
+message CashTransferClientBankBalanceResponse {
+    required string message = 1;
+    required bool success = 2;
+}

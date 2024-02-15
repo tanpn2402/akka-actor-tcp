@@ -1,0 +1,25 @@
+syntax = "proto2";
+
+package protobuf.response;
+
+option java_package = "com.txtech.services.protobuf.response";
+option java_outer_classname = "SeriesGridResponseProtos";
+
+message SeriesGridResponse {
+    optional int32 msgSeq = 1;
+    optional string errorCode = 2;
+    optional string errorMessage = 3;
+    optional string messageID = 4;
+    optional int32 returnCode = 5;
+
+    message MvResult {
+        required string BOCALLPUT = 1;
+        required string BOMATMONTH = 2;
+        required string BOSTRIKEPRICE = 3;
+        required string SERIESID = 4;
+    }
+
+    repeated MvResult mvResult = 6;
+    optional string mnBOCommondityId = 7;
+    optional string mvMarketId = 8;
+}

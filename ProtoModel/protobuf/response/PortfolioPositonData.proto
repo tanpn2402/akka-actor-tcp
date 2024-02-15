@@ -1,0 +1,37 @@
+syntax = "proto2";
+
+package response;
+
+option java_package = "com.txtech.services.protobuf.response";
+option java_outer_classname = "PortfolioPositionSummaryDetail";
+
+message PortfolioPositionSummary {
+	optional string clientID=3;
+	optional int32 tradingAccSeq=4;
+	optional string subAccountID=5;
+	repeated PositionSummaryDetail openPositionSummaryList = 1;
+	repeated PositionSummaryDetail closePositionSummaryList =2;
+
+
+    message PositionSummaryDetail {
+       optional OrderInfo orderInfo = 1;
+	optional float tradePrice=2;
+	optional string ccy=3;
+	optional float marketprice=4;
+	optional float floatingPL=5;
+	optional float net=6;
+	optional string boardName=7;
+	optional float bidAvgPrice=8;
+	optional float askAvgPrice=9;
+	optional bool outstanding=10;
+	optional int32 short=11;
+	optional int32 long=12;
+	optional float tradingPL=13;
+
+
+        message OrderInfo {
+            required string marketID = 1;
+            required string seriesID = 2;
+        }
+    }
+}

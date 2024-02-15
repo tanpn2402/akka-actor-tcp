@@ -1,0 +1,54 @@
+syntax = "proto2";
+
+package protobuf.bean;
+
+option java_package = "com.txtech.services.protobuf.bean";
+option java_outer_classname = "OrderDetailProtos";
+
+message OrderDetail {
+    optional string orderGroupID = 1;
+    optional string conditionOrderGroupID = 2;
+    optional string orderID = 3;
+    optional string instrumentId = 4 ;
+    optional string marketID = 5;
+    optional string inputTime = 6;
+    optional string modifiedTime = 7;
+    optional string price = 8;
+    optional string qty = 9;
+    optional string bs = 10;
+    optional string orderType = 11;
+    optional string minQty = 12;
+    optional bool auctionOrder = 13;
+    optional bool tPlus1 = 14;
+    optional string validity = 15;
+    optional string stopTime = 16;
+    optional string stopPrice = 17;
+    optional string stopPrice2 = 18;
+    optional string stopToler = 19;
+    optional string channelID = 20;
+    optional string pendingPrice = 21;
+    optional string pendingQty = 22;
+    optional string cancelQty = 23;
+    optional string osqty = 24;
+    optional string filledQty = 25;
+    optional string activationDate = 26;
+    optional string goodTillDate = 27;
+    optional string avgPrice = 28;
+    optional string netAmt = 29;
+    optional string grossAmt = 30;
+    optional string contactPhone = 31;
+    optional string mofifyOrderID = 32;
+    optional bool stopOrder = 33;
+    optional string position = 34;
+    optional string status = 35;
+    optional bool modifiable = 36;
+    optional bool cancellable = 37;
+    optional string subAccountID = 38;
+    optional string clientID = 39;
+    optional string tradingAccSeq = 40;
+    optional string currencyID = 41;
+    optional string remark = 42;
+    optional string rejectReason = 43;
+    optional string stopType = 44;
+    optional string shortName = 45;
+}

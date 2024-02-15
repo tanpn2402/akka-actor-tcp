@@ -1,0 +1,27 @@
+syntax = "proto2";
+
+package protobuf.bean;
+
+option java_package = "com.txtech.services.protobuf.bean";
+option java_outer_classname = "BalanceDetailsProtos";
+
+message BalanceDetails {
+    optional double doubleingPL = 1;
+    optional int64 settled = 2;
+    optional double initMargin = 3;
+    optional double maintenanceMargin = 4;
+    optional double surplus = 5;
+    optional double holdFund = 6;
+    optional double totalCollateral = 7;
+    optional double tradingPL = 8;
+    optional double openBalance = 9;
+    optional double commission = 10;
+    optional double tradingFeeLevies = 11;
+    optional double deposit = 12;
+    optional double withdrawal = 13;
+    optional double totalEquity = 14;
+    optional int64 balanceBF = 15;
+    optional int64 BalanceCF = 16;
+    optional double bankdoubleFund = 17;
+    optional double tradingLimit = 18;
+}

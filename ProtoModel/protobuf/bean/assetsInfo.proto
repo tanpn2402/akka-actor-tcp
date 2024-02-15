@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+package protobuf.bean;
+
+option java_package = "com.txtech.services.protobuf.bean";
+option java_outer_classname = "AssetsInfoProtos";
+
+message AssetsInfo {
+    optional int64 cash = 1;
+    optional double validNonCash = 2;
+    optional double totalValue = 3;
+    optional int64 maxValidNonCash = 4;
+    optional double cashWithdrawable = 5;
+    optional double ee = 6;
+}

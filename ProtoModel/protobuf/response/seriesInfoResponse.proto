@@ -1,0 +1,48 @@
+syntax = "proto2";
+
+package protobuf.response;
+
+option java_package = "com.txtech.services.protobuf.response";
+option java_outer_classname = "SeriesInfoResponseProtos";
+
+message SeriesInfoResponse {
+    required string mvSeriesID = 1;
+    required string mvContractMonth = 2;
+    required string mvBoardName = 3;
+    required string mvBID = 4;
+    required string mvTradeType = 5;
+    required string mvPriceDecimal = 6;
+    required string mvExpired = 7;
+    required string tradingSesionStatus = 8;
+    required string tradingSessionStatusCode = 9;
+    required string mvMarket = 10;
+    required string mvCeiling = 11;
+    required string mvFloor = 12;
+    required string mvReferences = 13;
+    required string mvDate = 14;
+    required string mvSecurityType = 15;
+    required string mvCurrencyCode = 16;
+    required bool isRemoved = 17;
+    required string mvForeignForBuy = 18;
+    required string mvForeignBuyValue = 19;
+    required string mvForeignForSell = 20;
+    required string mvForeignSellValue = 21;
+    required string mvMatchPrice = 22;
+    required string mvMatchVol = 23;
+    required string mvMatchVolTotal = 24;
+    required string mvOpen = 25;
+    required string mvHigh = 26;
+    required string mvLow = 27;
+    required string mvBidPrice1 = 28;
+    required string mvBidPrice2 = 29;
+    required string mvBidPrice3 = 30;
+    required string mvBidVol1 = 31;
+    required string mvBidVol2 = 32;
+    required string mvBidVol3 = 33;
+    required string mvOfferPrice1 = 34;
+    required string mvOfferPrice2 = 35;
+    required string mvOfferPrice3 = 36;
+    required string mvOfferVol1 = 37;
+    required string mvOfferVol2 = 38;
+    required string mvOfferVol3 = 39;
+}

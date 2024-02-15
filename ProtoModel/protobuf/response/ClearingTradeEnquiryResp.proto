@@ -1,0 +1,16 @@
+syntax = "proto2";
+package protobuf.response;
+import "protobuf/bean/clearingTradeDetail.proto";
+ 
+option java_package = "com.txtech.services.protobuf.response";
+option java_outer_classname = "ClearingTradeEnquiryProtoResp";
+ 
+message ClearingTradeEnquiryResp {
+
+	optional int32 msgSeq = 1;
+    optional string errorCode = 2;
+    optional string errorMessage = 3;
+    optional string rowCount = 4;
+    optional int32 returnCode = 5;
+    repeated protobuf.bean.ClearingTradeDetail mainResult = 6;
+}

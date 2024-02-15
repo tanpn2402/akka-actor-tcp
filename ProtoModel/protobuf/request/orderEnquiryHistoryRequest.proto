@@ -1,0 +1,18 @@
+syntax = "proto2";
+
+package protobuf.request;
+
+option java_package = "com.txtech.services.protobuf.request";
+option java_outer_classname = "OrderEnquiryHistoryRequestProtos";
+
+message OrderEnquiryHistoryRequest {
+    required string clientID = 1;
+    required int32 tradingAccSeq = 2;
+    required string subAccountID = 3;
+    required string language = 4;
+    required Date fromDate = 5;
+    required Date toDate = 6;
+    required string status = 7;
+    
+    message Date {}
+}

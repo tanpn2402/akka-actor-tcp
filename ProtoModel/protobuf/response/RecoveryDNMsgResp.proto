@@ -1,0 +1,18 @@
+syntax = "proto2";
+
+import "protobuf/bean/orderEnqDetail.proto";
+
+package protobuf.response;
+ 
+option java_package = "com.txtech.services.protobuf.response";
+option java_outer_classname = "RecoveryDNMsgProtoResp";
+ 
+message RecoveryDNMsgResp {
+    optional string errorCode = 1;
+    optional string errorMessage = 2;
+    optional int32 rowCount = 3;
+    optional int32 batchSize = 4;
+    optional int32 batchNum = 5;
+    optional int32 totalBatchCount = 6;
+    repeated protobuf.bean.OrderEnqDetail mainResult = 7;
+}

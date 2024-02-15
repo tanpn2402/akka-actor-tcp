@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+package protobuf.request;
+ 
+option java_package = "com.txtech.services.protobuf.request";
+option java_outer_classname = "LogoutProtoReq";
+ 
+
+message LogoutReq {
+	required string operatorID=1;
+}
+
+

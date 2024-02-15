@@ -1,0 +1,77 @@
+syntax = "proto2";
+
+package protobuf.response;
+
+option java_package = "com.txtech.services.protobuf.response";
+option java_outer_classname = "ClientPortfolioEnquiryResponseProtos";
+
+message ClientPortfolioEnquiryResponse {
+    optional int32 msgSeq = 1;
+    optional string errorCode = 2;
+    optional string errorMessage = 3;
+    optional string messageID = 4;
+    optional int32 returnCode = 5;
+    repeated OpenPositionList openPositionList = 6;
+    repeated OpenPositionSummaryList openPositioSummaryList = 7;
+    repeated ClosePositionList closePositionList = 8;
+    repeated ClosePositionSummaryList closePositionSummaryList = 9;
+    repeated StockBalanceList stockBalanceList = 10;
+    repeated StockMovementList  stockMovementList = 11;
+    repeated CounterPartyDWList counterPartyDWList = 12;
+
+    message OpenPositionList {
+    }
+
+    message OpenPositionSummaryList {
+        required OrderInfo orderInfo = 1;
+
+        message OrderInfo {
+            required string marketID = 1;
+            optional string commodityName = 2;
+            optional string contractMonth = 3;
+            optional string orderID = 4;
+            optional string validity = 5;
+            optional string orderType = 6;
+            optional string validityDate = 7;
+            required string seriesID = 8;
+            optional string bs = 9;
+            optional string orderGroupID = 10;
+        }
+    }
+
+    message ClosePositionList {
+    }
+
+    message ClosePositionSummaryList {
+    }
+
+    message StockBalanceList {
+    }
+
+    message StockMovementList {
+    }
+
+    message CounterPartyDWList {
+        required string txnID = 1;
+        optional string tranDate = 2;
+        optional string inputDate = 3;
+        required string counterPartyAccountID = 4;
+        required string counterPartyAccountName = 5;
+        required string brokerID = 6;
+        required string brokerName = 7;
+        required string txnTypeID = 8;
+        required string txnTypeDesc = 9;
+        required string bankID = 10;
+        required string bankShortName = 11;
+        required string accountCode = 12;
+        required string chequeNumber = 13;
+        required string currencyID = 14;
+        required string remarks = 15;
+        required string otherType = 16;
+        required string movementID = 17;
+        optional int32 csettled = 18;
+    }
+
+    message MessageName {
+    }
+}

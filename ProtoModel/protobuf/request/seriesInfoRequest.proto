@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+package protobuf.request;
+
+option java_package = "com.txtech.services.protobuf.request";
+option java_outer_classname = "SeriesInfoRequestProtos";
+
+message SeriesInfoRequest {
+    required string clientID = 1;
+    required int32 tradingAccSeq = 2;
+    required string subAccountID = 3;
+    required string language = 4;
+    required string seriesID = 5;
+    required string marketID = 6;
+}

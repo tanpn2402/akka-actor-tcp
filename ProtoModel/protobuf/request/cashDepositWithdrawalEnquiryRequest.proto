@@ -1,0 +1,20 @@
+syntax = "proto2";
+
+package protobuf.request;
+
+option java_package = "com.txtech.services.protobuf.request";
+option java_outer_classname = "CashDepositWithdrawalEnquiryRequestProtos";
+
+message CashDepositWithdrawalEnquiryRequest {
+    optional string clientID = 1;
+    optional int32 tradingAccSeq = 2;
+    optional string subAccountID = 3;
+    optional string language = 4;
+    optional string action = 5;
+    optional Date fromDate = 6;
+    optional Date toDate = 7;
+    optional string tranType = 8;
+
+    message Date {
+    }
+}

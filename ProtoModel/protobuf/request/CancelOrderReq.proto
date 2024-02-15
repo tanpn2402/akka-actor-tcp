@@ -1,0 +1,27 @@
+syntax = "proto2";
+
+package protobuf.request;
+ 
+option java_package = "com.txtech.services.protobuf.request";
+option java_outer_classname = "CancelOrderProtoReq";
+ 
+message CancelOrderReq {
+    message OrderInfo{
+		required string bs = 1;
+		required string marketID = 2;
+		required string commodityName = 3;
+		required string contractMonth = 4;
+		required string orderID = 5;
+		required string validity = 6;
+		required string orderType = 7;
+		optional string validityDate = 8;
+		required string orderGroupID = 9;
+		required string seriesID = 10;
+	}
+	required string clientID = 1;
+    required int32 tradingAccSeq = 2;
+    required string language = 3;
+	required string subAccoutID = 4;
+    required bool isSingle = 5;
+    repeated OrderInfo orderInfo = 6;
+}

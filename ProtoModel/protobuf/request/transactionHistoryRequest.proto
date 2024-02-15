@@ -1,0 +1,16 @@
+syntax = "proto2";
+
+package protobuf.request;
+
+option java_package = "com.txtech.services.protobuf.request";
+option java_outer_classname = "TransactionHistoryRequestProtos";
+
+message TransactionHistoryRequest {
+    required string clientID = 1;
+    required int32 trandingAccSeq = 2;
+    required string subAccSeq = 3;
+    required string language = 4;
+    required string fromDate = 5;
+    required string toDate = 6;
+    required string tranType = 7;
+}
