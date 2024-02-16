@@ -1,6 +1,8 @@
 package dev.tanpn;
 
 import java.net.InetSocketAddress;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,6 +16,7 @@ import akka.io.Tcp.ConnectionClosed;
 import akka.io.Tcp.Received;
 import akka.io.TcpMessage;
 import akka.util.ByteString;
+import dev.tanpn.ivrs.IVRSMsg;
 import dev.tanpn.message.TcpSimpleMsg;
 
 public class Client extends AbstractActor {
@@ -21,6 +24,8 @@ public class Client extends AbstractActor {
 
 	final InetSocketAddress remote;
 	final ActorRef listener;
+	
+	private Map<Integer, IVRSMsg> 						ivMsgTable;
 
 	public static Props props(InetSocketAddress remote, ActorRef listener) {
 		return Props.create(Client.class, remote, listener);
@@ -29,6 +34,7 @@ public class Client extends AbstractActor {
 	public Client(InetSocketAddress remote, ActorRef listener) {
 		this.remote = remote;
 		this.listener = listener;
+		this.ivMsgTable = new ConcurrentHashMap<>();
 
 		final ActorRef tcp = Tcp.get(getContext().getSystem()).manager();
 		// sending a message by the TcpMessage.connect method to the TCP manager in
@@ -50,6 +56,7 @@ public class Client extends AbstractActor {
 					getContext().stop(getSelf());
 				})
 				.match(Connected.class, msg -> {
+					logger.info("connection is established");
 					// tell listener that connection is established
 					listener.tell(msg, getSelf());
 
@@ -70,13 +77,19 @@ public class Client extends AbstractActor {
 
 	private Receive connected(final ActorRef connection) {
 		return receiveBuilder()
-				.match(TcpSimpleMsg.class, msg -> {
-					logger.info("Send message to server " + msg.getMessage());
-					connection.tell(TcpMessage.write(ByteString.fromString(msg.getMessage())), getSelf());
+//				.match(TcpSimpleMsg.class, msg -> {
+//					logger.info("Send message to server " + msg.getMessage());
+//					connection.tell(TcpMessage.write(ByteString.fromString(msg.getMessage())), getSelf());
+//				})
+				.match(IVRSMsg.class, msg -> {
+					msg.setActorRef(getSender());
+					ivMsgTable.put(msg.getHeader().getId(), msg);
+					logger.info("Send message to server " + msg.getRaw());
+					connection.tell(TcpMessage.write(ByteString.fromArray(msg.getByes())), getSelf());
 				})
-				.match(ByteString.class, msg -> {
-					connection.tell(TcpMessage.write((ByteString) msg), getSelf());
-				})
+//				.match(ByteString.class, msg -> {
+//					connection.tell(TcpMessage.write((ByteString) msg), getSelf());
+//				})
 				.match(CommandFailed.class, msg -> {
 					// OS kernel socket buffer was full
 				})
