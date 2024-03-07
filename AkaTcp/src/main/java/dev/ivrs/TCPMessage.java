@@ -81,28 +81,20 @@ public class TCPMessage extends AbstractActor {
 
 	private Receive connected(final ActorRef connection) {
 		return receiveBuilder()
-//				.match(TcpSimpleMsg.class, msg -> {
-//					logger.info("Send message to server " + msg.getMessage());
-//					connection.tell(TcpMessage.write(ByteString.fromString(msg.getMessage())), getSelf());
-//				})
 				.match(IVRSMsg.class, msg -> {
 					msg.setActorRef(getSender());
 					ivMsgTable.put(msg.getHeader().getId(), msg);
-					logger.info("Send message to server " + msg.getRaw());
+					logger.info("Send message to server {" + msg.getRaw() + "}");
 					connection.tell(TcpMessage.write(ByteString.fromArray(msg.getByes())), getSelf());
 				})
-//				.match(ByteString.class, msg -> {
-//					connection.tell(TcpMessage.write((ByteString) msg), getSelf());
-//				})
 				.match(CommandFailed.class, msg -> {
 					// OS kernel socket buffer was full
 				})
 				.match(Received.class, msg -> {
 					// messages from server
-					
 					try {
 						final String msgStr = msg.data().utf8String().trim();
-						logger.info("Received new message from server: " + msgStr);
+						logger.info("Received new message from server {" + msgStr + "}");
 						IVRSMsgHeader header = new IVRSMsgHeader(msg.data().toArray(), 0);
 						if (header != null && ivMsgTable.containsKey(header.getId())) {
 							IVRSMsg ivrsMsg = ivMsgTable.get(header.getId());
@@ -124,7 +116,7 @@ public class TCPMessage extends AbstractActor {
 					connection.tell(TcpMessage.close(), getSelf());
 				})
 				.match(ConnectionClosed.class, msg -> {
-					logger.log(Level.WARNING, "Connection is closed unexpected. Maybe caused by Server stopped");
+					logger.log(Level.WARNING, "Connection is closed unexpected. Maybe caused by Server stopped or close was triggered");
 					// kill this actor
 					getContext().stop(getSelf());
 					listener.dispatchEvent(TCPEvent.DISCONNECTED);

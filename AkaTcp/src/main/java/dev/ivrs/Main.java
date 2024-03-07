@@ -30,16 +30,17 @@ public class Main {
 		final String PORT = System.getProperty("IVRSServerPort", "50014");
 		InetSocketAddress inetSocketAddress = new InetSocketAddress(IP, Integer.parseInt(PORT));
 		
+		ActorRef tcpClient = null;
 		try {
 			CountDownLatch lvLatch = new CountDownLatch(1);
 			// create new TCP actor and wait for TCP connection connected.
-			ActorRef tcpClient = actorSystem.actorOf(TCPMessage.props(inetSocketAddress, (event) -> {
+			tcpClient = actorSystem.actorOf(TCPMessage.props(inetSocketAddress, (event) -> {
 				if (lvLatch.getCount() > 0 && event == TCPEvent.CONNECTED) {
 					lvLatch.countDown();
 				}
 			}), "TCP_client");
 			
-			lvLatch.await(5_000, TimeUnit.MILLISECONDS);
+			lvLatch.await(10_000, TimeUnit.MILLISECONDS);
 			
 //			M14Req req = new M14Req("MKTSTATUS", 10);
 //			req.setMarket("HKG");
@@ -53,7 +54,7 @@ public class Main {
 			req.setAccount("1000000002");
 			req.setEncryptedPIN("123457");
 			
-			Future<Object> future = Patterns.ask(tcpClient, req, 10_000);
+			Future<Object> future = Patterns.ask(tcpClient, req, 60_000);
 			IVRSResponse response = (IVRSResponse) Await.result(future, Duration.create(60_000, TimeUnit.MILLISECONDS));
 			logger.info(response.toString());
 		}
@@ -65,6 +66,12 @@ public class Main {
 			logger.log(Level.FINEST, "Cannot receive message from TCP server", e);
 			e.printStackTrace();
 		}
+		finally {
+			if (tcpClient != null) {
+				tcpClient.tell("close", ActorRef.noSender());
+			}
+		}
 		
+		System.exit(0);
 	}
 }
