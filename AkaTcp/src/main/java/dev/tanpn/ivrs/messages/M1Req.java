@@ -3,6 +3,7 @@ package dev.tanpn.ivrs.messages;
 import java.nio.ByteBuffer;
 
 import dev.tanpn.ivrs.IVRSMsg;
+import dev.tanpn.ivrs.IVRSResponse;
 import dev.tanpn.ivrs.Utl;
 
 public class M1Req extends IVRSMsg {
@@ -63,6 +64,16 @@ public class M1Req extends IVRSMsg {
 
 	public void setAioHostPath(String aioHostPath) {
 		this.aioHostPath = aioHostPath;
+	}
+	
+	@Override
+	public IVRSResponse parseResponse(ByteBuffer data) {
+		M1Resp resp = new M1Resp();
+		resp.setPinValid(Utl.getString(data, 1));
+		resp.setAccountStatus(Utl.getString(data, 1));
+		resp.setChangePIN(Utl.getString(data, 1));
+		resp.setEncryptedHostSessionID(Utl.getString(data, 32));
+		return resp;
 	}
 	
 	@Override

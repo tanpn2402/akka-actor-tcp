@@ -1,5 +1,6 @@
 package dev.tanpn.ivrs;
 
+import java.nio.ByteBuffer;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import akka.actor.ActorRef;
@@ -36,6 +37,10 @@ public class IVRSMsg {
 
 	public void setActorRef(ActorRef actorRef) {
 		this.actorRef = actorRef;
+	}
+	
+	public IVRSResponse parseResponse(ByteBuffer data) {
+		return null;
 	}
 
 }
